@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HireFlow | Recruitment Dashboard</title>
+  <link rel="stylesheet" href="HireFlow.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">H</div>
+        <span>HireFlow</span>
+      </div>
+
+      <p class="menu-label">WORKSPACE</p>
+      <nav>
+        <a class="nav-link active" href="#dashboard">▦ <span>Dashboard</span></a>
+        <a class="nav-link" href="#jobs">▤ <span>Job Openings</span></a>
+        <a class="nav-link" href="#candidates">♙ <span>Candidates</span></a>
+        <a class="nav-link" href="#pipeline">⇄ <span>Hiring Pipeline</span></a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="help-card">
+          <div class="help-icon">✦</div>
+          <strong>Need help?</strong>
+          <p>Manage your hiring process with ease.</p>
+        </div>
+        <div class="profile">
+          <div class="avatar">SR</div>
+          <div>
+            <strong>Saquib Raza</strong>
+            <small>HR Manager</small>
+          </div>
+          <span class="dots">•••</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content" id="dashboard">
+      <header class="topbar">
+        <div>
+          <p class="breadcrumb">Workspace / Overview</p>
+          <h1>Dashboard</h1>
+        </div>
+        <div class="top-actions">
+          <span class="today">● System Active</span>
+          <div class="notification">N<i></i></div>
+          <div class="top-avatar">SR</div>
+        </div>
+      </header>
+
+      <section class="welcome">
+        <div>
+          <span class="welcome-tag">YOUR RECRUITMENT SPACE</span>
+          <h2>Welcome back, Saquib! 👋</h2>
+          <p>Here's what's happening with your hiring process today.</p>
+        </div>
+        <div class="welcome-art">S</div>
+      </section>
+
+      <section class="stats">
+        <div class="stat-card">
+          <div class="stat-top"><span>Total Jobs</span><span class="stat-icon blue">▤</span></div>
+          <h2 id="totalJobs">0</h2>
+          <p><span class="positive">↗ Active</span> job openings</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-top"><span>Total Applicants</span><span class="stat-icon purple">♙</span></div>
+          <h2 id="totalApplicants">0</h2>
+          <p>Applications received</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-top"><span>Interviews</span><span class="stat-icon orange">▣</span></div>
+          <h2 id="totalInterviews">0</h2>
+          <p>In interview stage</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-top"><span>Selected</span><span class="stat-icon green">✓</span></div>
+          <h2 id="totalSelected">0</h2>
+          <p>Successful candidates</p>
+        </div>
+      </section>
+
+      <section class="content-grid">
+        <div class="panel jobs-panel" id="jobs">
+          <div class="panel-heading">
+            <div>
+              <h3>Recent Job Openings</h3>
+              <p>Manage your active job listings</p>
+            </div>
+            <button class="primary-btn" onclick="showJobForm()">＋ Add Job</button>
+          </div>
+
+          <form id="jobForm" class="job-form hidden">
+            <input type="text" id="jobTitle" placeholder="Job title" required>
+            <input type="text" id="jobDepartment" placeholder="Department" required>
+            <input type="text" id="jobType" placeholder="Job type (Full-time)" required>
+            <button class="primary-btn" type="submit">Save Job</button>
+          </form>
+
+          <div id="jobsList" class="jobs-list"></div>
+        </div>
+
+        <div class="panel pipeline-panel" id="pipeline">
+          <div class="panel-heading">
+            <div>
+              <h3>Hiring Overview</h3>
+              <p>Candidate progress</p>
+            </div>
+            <span class="mini-badge">Live data</span>
+          </div>
+          <div class="pipeline-visual">
+            <div class="pipeline-number" id="pipelineTotal">0</div>
+            <p>Total candidates</p>
+          </div>
+          <div class="stage-row">
+            <span><i class="stage-dot applied"></i> Applied</span>
+            <strong id="appliedCount">0</strong>
+          </div>
+          <div class="stage-row">
+            <span><i class="stage-dot screening"></i> Screening</span>
+            <strong id="screeningCount">0</strong>
+          </div>
+          <div class="stage-row">
+            <span><i class="stage-dot interview"></i> Interview</span>
+            <strong id="interviewCount">0</strong>
+          </div>
+          <div class="stage-row">
+            <span><i class="stage-dot selected"></i> Selected</span>
+            <strong id="selectedCount">0</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel candidates-panel" id="candidates">
+        <div class="panel-heading candidate-heading">
+          <div>
+            <h3>Recent Candidates</h3>
+            <p>Review and manage candidate applications</p>
+          </div>
+          <input type="search" id="searchInput" class="search-box" placeholder="⌕  Search candidates...">
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Candidate</th>
+                <th>Applied For</th>
+                <th>Applied Date</th>
+                <th>Status</th>
+                <th>Update Status</th>
+              </tr>
+            </thead>
+            <tbody id="candidateTable"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <footer>© 2026 HireFlow. Built for smarter hiring.</footer>
+    </main>
+  </div>
+
+  <script src="HireFlow.js"></script>
+</body>
+</html>
